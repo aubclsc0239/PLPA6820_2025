@@ -7,7 +7,7 @@ This is a dummy reposirtory to demonstrate directory structure, file tree, linki
 
 These are the links to the analysis file variable on Github (.md). The .RMD files and .HTML rendered files are also available
 
-- [Challenge 4 Analysis](Coding Challenge 4/Challenge4.md)
+- [Challenge 4 Analysis](coding_challenge 4/Challenge4.md)
 
 ## file tree
 
