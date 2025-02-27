@@ -1,0 +1,125 @@
+---
+title: "Challenge 4"
+author: "Abdulmalik oladipupo"
+date: "2025-02-27"
+output:
+  word_document:
+    toc: true
+  md_document:
+    variant: gfm
+  html_document:
+    toc: true
+---
+
+[Manuscript](https://doi.org/10.1094/PDIS-06-21-1253-RE)
+ 
+ 
+## Load required packages 
+```{r}
+library (tidyverse)
+library (ggpubr)
+library (ggrepel)
+library(ggplot2)
+```
+
+## Setting color palet
+```{r}
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+```
+
+
+## Load the data in
+```{r}
+mycotoxin.data <- read.csv("MycotoxinData.csv", na.strings = "na")                
+str (mycotoxin.data)
+```
+
+## Make cultivar and treatment a factor
+```{r}
+mycotoxin.data$Cultivar <- as.factor(mycotoxin.data$Cultivar)       
+mycotoxin.data$Treatment <- as.factor(mycotoxin.data$Treatment)
+```
+
+
+## Plot DON against treatment 
+```{r setup, include=TRUE, echo=TRUE}
+don.treatment.1 <- ggplot (mycotoxin.data, aes(x = Treatment, y = DON, fill = Cultivar)) +
+  geom_boxplot(position = "dodge") +
+  #geom_point(position = position_jitterdodge(0.6)) +
+  geom_jitter(pch = 21, position = position_jitterdodge(), color = "black") +
+  xlab("") +
+  ylab("DON(ppm)") +
+  scale_fill_manual(values = c(cbbPalette[[3]], cbbPalette[[4]])) +
+  theme_classic() + 
+  facet_wrap(~Cultivar, scales = "free")
+don.treatment.1
+```
+
+
+## Change the factor order level so that the treatment
+```{r}
+mycotoxin.data$Treatment <- factor(mycotoxin.data$Treatment, levels = c ("NTC", "Fg", "Fg + 37", "Fg + 40", "Fg + 70"))
+```
+
+
+## Plot X15ADON against treatment
+```{r}
+don.treatment.2 <- ggplot (mycotoxin.data, aes(x = Treatment, y = X15ADON, fill = Cultivar)) +
+  geom_boxplot(position = "dodge") +
+  #geom_point(position = position_jitterdodge(0.6)) +
+  geom_jitter(pch = 21, position = position_jitterdodge(), color = "black") +
+  xlab("") +
+  ylab("15ADON") +
+  scale_fill_manual(values = c(cbbPalette[[3]], cbbPalette[[4]])) +
+  theme_classic() + 
+  facet_wrap(~Cultivar, scales = "free")
+don.treatment.2
+```
+
+
+## Plot Massperseed against treatment
+```{r}
+don.treatment.3 <- ggplot (mycotoxin.data, aes(x = Treatment, y = MassperSeed_mg, fill = Cultivar)) +
+  geom_boxplot(position = "dodge") +
+  #geom_point(position = position_jitterdodge(0.6)) +
+  geom_jitter(pch = 21, position = position_jitterdodge(), color = "black") +
+  xlab("") +
+  ylab("Seed Mass (mg)") +
+  scale_fill_manual(values = c(cbbPalette[[3]], cbbPalette[[4]])) +
+  theme_classic() + 
+  facet_wrap(~Cultivar, scales = "free")
+don.treatment.3
+```
+
+
+## Perfrom a t-test comparison of treatments
+```{r}
+Plot1 <- don.treatment.1 + 
+  geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+
+Plot2 <- don.treatment.2 + 
+  geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+
+Plot3 <- don.treatment.3 + 
+  geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+```
+
+
+## Stick many the three figures together for a publication ready figure
+```{r}
+Figure_2 <- ggarrange(
+  Plot1, 
+  Plot2,
+  Plot3,
+  nrow = 1,
+  ncol = 3,
+  labels = "auto",
+  common.legend = TRUE
+)
+Figure_2
+```
+
+
+
+
