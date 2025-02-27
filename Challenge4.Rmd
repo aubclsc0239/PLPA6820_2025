@@ -3,17 +3,17 @@ title: "Challenge 4"
 author: "Abdulmalik oladipupo"
 date: "2025-02-27"
 output:
-  word_document:
-    toc: true
   md_document:
     variant: gfm
-  html_document:
+  pdf_document:
+    toc: true
+  word_document:
     toc: true
 ---
 
-[Manuscript](https://doi.org/10.1094/PDIS-06-21-1253-RE)
+[ Link to Manuscript](https://doi.org/10.1094/PDIS-06-21-1253-RE)
  
- 
+
 ## Load required packages 
 ```{r}
 library (tidyverse)
