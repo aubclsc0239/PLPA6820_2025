@@ -5,7 +5,7 @@ This is a PLPA6820 repository to demonstrate Challenge 3
 
 ## Links to analysis
 
-- [Challenge 4 Analysis](coding_challenge_4/Challenge4.md)
+- [Challenge 4 Analysis](coding_challenge_4/Rmarkdown.md)
 
 ## file tree
 
