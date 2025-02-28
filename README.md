@@ -1,6 +1,6 @@
 # PLPA6820_2025
 
-# DUMMY Demonstration Repository
+# Challenge4 Demonstration Repository
 This is a PLPA6820 repository to demonstrate Challenge 3
 
 ## Links to analysis
