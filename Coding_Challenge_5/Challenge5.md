@@ -1,4 +1,4 @@
-## Question 1 & 2
+## Question 1
 
 Download two .csv files from Canvas called DiversityData.csv and
 Metadata.csv, and read them into R using relative file paths.
