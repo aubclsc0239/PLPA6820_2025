@@ -203,3 +203,6 @@ alpha_average2 %>%
 Commit and push a gfm .md file to GitHub inside a directory called
 Coding Challenge 5. Provide me a link to your github written as a
 clickable link in your .pdf or .docx
+
+[Link to Github
+Challenge5](https://github.com/aubclsc0239/PLPA6820_2025/tree/main/Coding_Challenge_5)
