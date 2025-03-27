@@ -128,3 +128,6 @@ head(distance_df, 6)
     ## 4       Miami Auburn    916.4138
     ## 5     Houston Auburn    993.0298
     ## 6      Dallas Auburn   1056.0217
+
+[link to
+Github_Challenge6](https://github.com/aubclsc0239/PLPA6820_2025/tree/main/Coding_challenge_6)
